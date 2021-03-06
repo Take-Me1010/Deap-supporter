@@ -6,7 +6,7 @@ import { RegisteredAliasProvider } from './RegisteredAliasProvider';
 
 export function activate(context: vscode.ExtensionContext) {
 	const editor = vscode.window.activeTextEditor;
-	const config = vscode.workspace.getConfiguration('Deap-supporter');
+	const config = vscode.workspace.getConfiguration('deap-supporter');
 
 	const createCallWay: string|undefined = config.get('createCallWay');
 	const instanceNameOfToolBox: string|undefined = config.get('InstanceNameOfToolBox');
@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const loadDocument = () => {
 		if (editor === undefined) {
-			vscode.window.showInformationMessage('Failed to Deap-supporter. loadDocument because activeTextEditor is undefined.');
+			vscode.window.showInformationMessage('Failed to deap-supporter. loadDocument because activeTextEditor is undefined.');
 			return;
 		}
 		const doOverWrite: boolean|undefined = config.get('alwaysOverwrite');
@@ -56,13 +56,13 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const loadSelection = () => {
 		if (editor === undefined) {
-			vscode.window.showInformationMessage('Failed to Deap-supporter.loadSelection because activeTextEditor is undefined.');
+			vscode.window.showInformationMessage('Failed to deap-supporter.loadSelection because activeTextEditor is undefined.');
 			return;
 		}
 		const doOverWrite: boolean|undefined = config.get('alwaysOverwrite');
 		let selection: vscode.Selection = editor.selection;
 		if (selection.isEmpty) {
-			vscode.window.showInformationMessage('failed to Deap-supporter.loadSelection because of no selection');
+			vscode.window.showInformationMessage('failed to deap-supporter.loadSelection because of no selection');
 			return;
 		}
 		let startRow: number = selection.active.line;
@@ -78,7 +78,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const reloadDocument = () => {
 		if (editor === undefined) {
-			vscode.window.showInformationMessage('Failed to Deap-supporter. loadDocument because activeTextEditor is undefined.');
+			vscode.window.showInformationMessage('Failed to deap-supporter. loadDocument because activeTextEditor is undefined.');
 			return;
 		}
 		createdClassProvider.reloadDocument(editor.document);
@@ -90,9 +90,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand('Deap-supporter.loadDocument', loadDocument),
-		vscode.commands.registerCommand('Deap-supporter.loadSelection', loadSelection),
-		vscode.commands.registerCommand('Deap-supporter.reloadDocument', reloadDocument)
+		vscode.commands.registerCommand('deap-supporter.loadDocument', loadDocument),
+		vscode.commands.registerCommand('deap-supporter.loadSelection', loadSelection),
+		vscode.commands.registerCommand('deap-supporter.reloadDocument', reloadDocument)
 	);
 }
 

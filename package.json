@@ -1,9 +1,9 @@
 {
-	"name": "Deap-supporter",
+	"name": "deap-supporter",
 	"displayName": "Deap-supporter",
 	"publisher": "Take-Me1010",
 	"repository": {
-		"url": ""
+		"url": "https://github.com/Take-Me1010/deap-supporter"
 	},
 	"description": "a useful extension when you use Deap.",
 	"version": "0.0.1",
@@ -14,45 +14,45 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:Deap-supporter.loadDocument",
-		"onCommand:Deap-supporter.loadSelection",
-		"onCommand:Deap-supporter.reloadDocument"
+		"onCommand:deap-supporter.loadDocument",
+		"onCommand:deap-supporter.loadSelection",
+		"onCommand:deap-supporter.reloadDocument"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "Deap-supporter.loadDocument",
-				"title": "Deap-supporter: load from current document for completion"
+				"command": "deap-supporter.loadDocument",
+				"title": "deap-supporter: load from current document for completion"
 			},
 			{
-				"command": "Deap-supporter.loadSelection",
-				"title": "Deap-supporter: load from selection for completion"
+				"command": "deap-supporter.loadSelection",
+				"title": "deap-supporter: load from selection for completion"
 			},
 			{
-				"command": "Deap-supporter.reloadDocument",
-				"title": "Deap-supporter: reload from current document for completion"
+				"command": "deap-supporter.reloadDocument",
+				"title": "deap-supporter: reload from current document for completion"
 			}
 		],
 		"configuration": {
-			"title": "Deap-supporter",
+			"title": "deap-supporter",
 			"properties": {
-				"Deap-supporter.alwaysOverwrite": {
+				"deap-supporter.alwaysOverwrite": {
 					"type": "boolean",
 					"default": true,
 					"description": "if true, overwrite the information of the already loaded class when loading created classes"
 				},
-				"Deap-supporter.neverShowSuccessfulInformation": {
+				"deap-supporter.neverShowSuccessfulInformation": {
 					"type": "boolean",
 					"default": false,
 					"description": "if true, do not show all messages except for ones to notify process failure."
 				},
-				"Deap-supporter.createCallWay": {
+				"deap-supporter.createCallWay": {
 					"type": "string",
 					"default": "creator.create",
 					"description": "the way to call create function. if you use deap.creator.create, you have to change this config into \"deap.creator.create\""
 				},
-				"Deap-supporter.InstanceNameOfToolBox": {
+				"deap-supporter.InstanceNameOfToolBox": {
 					"type": "string",
 					"default": "toolbox",
 					"description": "the name of instance of deap.base.ToolBox. used to parse document."
@@ -61,7 +61,7 @@
 		},
 		"keybindings": [
 			{
-				"command": "Deap-supporter.loadDocument",
+				"command": "deap-supporter.loadDocument",
 				"key": "ctrl+alt+l"
 			}
 		]
