@@ -151,6 +151,7 @@ class CreatedClassProvider {
         const base = this.parseBaseClassName(args, name);
         const attrs = this.parseAttributes(args, name, base);
         this.addClass(name, base, row, attrs, executeOverwrite);
+        console.log(`add : ${name}`);
         return true;
     }
     loadDocument(document, doOverWrite = CreatedClassProvider.doOverwriteDefault) {

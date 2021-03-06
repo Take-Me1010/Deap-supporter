@@ -209,7 +209,6 @@ export class CreatedClassProvider implements vscode.CompletionItemProvider, vsco
         const attrs: Dictionary = this.parseAttributes(args, name, base);
 
         this.addClass(name, base, row, attrs, executeOverwrite);
-
         return true;
     }
 
