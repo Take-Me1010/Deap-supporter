@@ -2,8 +2,10 @@
 
 All notable changes to the "deap-supporter-ts" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [1.0.0] - 2021-03-07
 
 - Initial release

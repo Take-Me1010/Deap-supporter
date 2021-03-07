@@ -136,6 +136,50 @@ You do not need to execute this command if `deap-supporter.alwaysOverwrite` is t
 If false, the classes and aliases will not be overwrote by `deap-supporter.loadDocument` or `deap-supporter.loadSelection`.
 You can overwrite them only by `deap-supporter.reloadDocument`.
 
+### `deap-supporter.neverShowSuccessfulInformation`
+
+*default: false*
+
+If true, never show the message to notify its process to load has finished successfully.
+
+### `deap-supporter.createCallWay`
+
+*default: "creator.create"*
+
+The coding style to call create().
+
+If your coding style is like deap.creator.create(),
+```python
+import deap
+deap.creator.create('Hoge', Fuga, attr=10)
+```
+you should set this configuration 'deap.creator.create'.
+
+For extreme example, if your code is like below,
+```python
+from deap import creator as c
+c.create('Foo', Bar, foobar=10)
+```
+you should set `deap-supporter.createCallWay` : c.create
+
+### `deap-supporter.InstanceNameOfToolBox`
+
+*default: "toolbox"*
+
+The name for instance of deap.base.ToolBox.
+
+If your coding style is like below,
+```python
+from deap import base
+
+toolBox = base.ToolBox()
+
+toolBox.register('Hoge', fuga)
+```
+you should set this configuration `"toolBox"`.
+
+This extension does not depend on how to call `deap.base.ToolBox`.
+
 ## Requirements
 
 No special requirements.
@@ -152,14 +196,7 @@ No issues now, I believe.
 
 ## Release Notes
 
-Unreleased.
+### 1.0.0
 
+Initial release!
 
-### 0.0.2
-
-supports compliment for toolbox.register()
-
-
-### 0.0.1
-
-supports compliment for creator.create()
