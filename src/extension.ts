@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 	const createdClassProvider = new CreatedClassProvider(createCallWay);
 	const registeredAliasProvider = new RegisteredAliasProvider(instanceNameOfToolBox);
-
+	
 	context.subscriptions.push(
 		vscode.languages.registerCompletionItemProvider(
 			'python', createdClassProvider, '.'

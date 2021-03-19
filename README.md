@@ -1,12 +1,14 @@
 # Deap-supporter
 
+[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version/Take-Me1010.deap-supporter.svg) ![installs](https://vsmarketplacebadge.apphb.com/installs/Take-Me1010.deap-supporter.svg) ![rating](https://vsmarketplacebadge.apphb.com/rating/Take-Me1010.deap-supporter.svg)](https://marketplace.visualstudio.com/items?itemName=Take-Me1010.deap-supporter)
+
 a useful extension when you use [Deap](https://github.com/deap/deap); a framework for Evolutionary Algorithm.
 
 ![](./images/demo.gif)
 
 ## Features
 
-This extension provides some useful functions when coding deap in python.
+This extension provides some useful code compliments when coding deap in python.
 
 deap.creator.create is useful, however this function dynamically generates python class, so there is no code compliment for its class name and attributes.
 Now, if you install this extension, **you are free to compliment them!!**
