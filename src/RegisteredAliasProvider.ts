@@ -107,10 +107,10 @@ export class RegisteredAliasProvider implements vscode.CompletionItemProvider, v
      * @param args ''attr_bool',random.randint,0,1のような文字列
      * @returns 'attr_bool'のようなエイリアス名
      */
-    private parseAliasName(args: string): string {
-        const aliasName: string | undefined = args.match(/\'\w+\'/)?.join('');
+    private parseAliasName(args: string): string|undefined {
+        const aliasName: string | undefined = args.match(/[\'\"]\w+[\'\"]/)?.join('');
         if (aliasName === undefined) {
-            throw new Error("Parse Error.");
+            return undefined;
         }
         return aliasName.substring(1, aliasName.length - 1);
     }
@@ -160,7 +160,10 @@ export class RegisteredAliasProvider implements vscode.CompletionItemProvider, v
 
         const args: string = this.parseArgs(lineRemovedSpace);
 
-        const aliasName: string = this.parseAliasName(args);
+        const aliasName: string|undefined = this.parseAliasName(args);
+        if(aliasName === undefined){
+            return false;
+        }
 
         const exist: boolean = this.isExist(aliasName);
         let executeOverwrite: boolean = false;

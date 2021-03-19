@@ -3,15 +3,20 @@
 	"displayName": "Deap-supporter",
 	"publisher": "Take-Me1010",
 	"repository": {
-		"url": "https://github.com/Take-Me1010/deap-supporter"
+		"url": "https://github.com/Take-Me1010/deap-supporter",
+		"type": "git"
 	},
 	"description": "a useful extension when you use Deap.",
-	"version": "1.0.0",
+	"icon": "./images/icon.png",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
 	"categories": [
 		"Other"
+	],
+	"keywords": [
+		"Python", "deap"
 	],
 	"activationEvents": [
 		"onCommand:deap-supporter.loadDocument",

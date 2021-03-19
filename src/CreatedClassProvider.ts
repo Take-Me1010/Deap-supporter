@@ -153,10 +153,10 @@ export class CreatedClassProvider implements vscode.CompletionItemProvider, vsco
      * @param args ''hoge', fuga, foo' のようなカンマ区切りの文字列
      * @returns 定義されたクラス名
      */
-    private parseClassName(args: string): string {
-        const name: string|undefined = args.match(/\'\w+\'/)?.join('');
+    private parseClassName(args: string): string|undefined {
+        let name: string|undefined = args.match(/[\'\"]\w+[\'\"]/)?.join('');
         if(name === undefined){
-            throw new Error("Parse Error.");
+            return undefined;
         }
         return name.substring(1, name.length-1);
     }
@@ -193,7 +193,10 @@ export class CreatedClassProvider implements vscode.CompletionItemProvider, vsco
 
         const args: string = this.getArgs(lineRemovedSpace);
 
-        const name: string = this.parseClassName(args);
+        const name: string|undefined = this.parseClassName(args);
+        if(name === undefined){
+            return false;
+        }
 
         const exist: boolean = this.isExist(name);
         let executeOverwrite: boolean = false;

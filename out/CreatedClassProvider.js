@@ -106,9 +106,9 @@ class CreatedClassProvider {
      */
     parseClassName(args) {
         var _a;
-        const name = (_a = args.match(/\'\w+\'/)) === null || _a === void 0 ? void 0 : _a.join('');
+        let name = (_a = args.match(/[\'\"]\w+[\'\"]/)) === null || _a === void 0 ? void 0 : _a.join('');
         if (name === undefined) {
-            throw new Error("Parse Error.");
+            return undefined;
         }
         return name.substring(1, name.length - 1);
     }
@@ -138,6 +138,9 @@ class CreatedClassProvider {
         }
         const args = this.getArgs(lineRemovedSpace);
         const name = this.parseClassName(args);
+        if (name === undefined) {
+            return false;
+        }
         const exist = this.isExist(name);
         let executeOverwrite = false;
         // 既に存在かつ上書き許可がないなら終了

@@ -194,11 +194,8 @@ I'm waiting for your contribution.
 
 ## Known Issues
 
-No issues now, I believe.
+- ~~Extension could not parse the string for "" before.~~
 
-## Release Notes
+## Changelog
 
-### 1.0.0
-
-Initial release!
-
+See [CHANGELOG.md](CHANGELOG.md)

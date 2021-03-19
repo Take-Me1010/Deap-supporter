@@ -86,9 +86,9 @@ class RegisteredAliasProvider {
      */
     parseAliasName(args) {
         var _a;
-        const aliasName = (_a = args.match(/\'\w+\'/)) === null || _a === void 0 ? void 0 : _a.join('');
+        const aliasName = (_a = args.match(/[\'\"]\w+[\'\"]/)) === null || _a === void 0 ? void 0 : _a.join('');
         if (aliasName === undefined) {
-            throw new Error("Parse Error.");
+            return undefined;
         }
         return aliasName.substring(1, aliasName.length - 1);
     }
@@ -136,6 +136,9 @@ class RegisteredAliasProvider {
         }
         const args = this.parseArgs(lineRemovedSpace);
         const aliasName = this.parseAliasName(args);
+        if (aliasName === undefined) {
+            return false;
+        }
         const exist = this.isExist(aliasName);
         let executeOverwrite = false;
         // 既に存在かつ上書き許可がないなら終了
