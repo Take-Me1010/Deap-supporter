@@ -194,7 +194,8 @@ I'm waiting for your contribution.
 
 ## Known Issues
 
-- ~~Extension could not parse the string for "" before.~~
+- Extension could not parse the string for "" before.
+  - already fixed in version 1.0.1.
 
 ## Changelog
 

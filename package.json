@@ -7,7 +7,7 @@
 		"type": "git"
 	},
 	"description": "a useful extension when you use Deap.",
-	"icon": "./images/icon.png",
+	"icon": "images/icon.png",
 	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.54.0"
