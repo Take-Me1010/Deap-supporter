@@ -1,22 +1,22 @@
 # Change Log
 
-All notable changes to the "deap-supporter-ts" extension will be documented in this file.
+All notable changes to the "deap-supporter" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
-## [2.0.0] - 2021-06-21
+## [2.0.0] - 2021-06-02
 
 ### changed
 
 - All of the commands exiting before have been abolished.
-  - Because there may be no need to reload current document.
+  - Because there may be no need to reload the current document.
     - Moreover, it's a pain in the ass to load or reload.
   - Instead, add the command to activate this extension.
 
 ### added
 
 - added the command to activate this extension
-  - once you activate, there is no need to load current document.
+  - once you activate, there is no need to load the current document.
   - automatically load and add your custom classes or aliases!
 
 
@@ -24,7 +24,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ### Fixed
 
-Extension could not parse the string for "" before.
+This extension could not parse the string for "" before.
 
 ```python
 # OK
