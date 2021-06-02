@@ -25,42 +25,10 @@ function activate(context) {
         createdClassProvider.loadDocument(editor.document, doOverWrite);
         registeredAliasProvider.loadDocument(editor.document, doOverWrite);
         if (!config.get('neverShowSuccessfulInformation')) {
-            vscode.window.showInformationMessage('Successfully load document!');
+            vscode.window.showInformationMessage('Successfully activate!');
         }
     };
-    const loadSelection = () => {
-        if (editor === undefined) {
-            vscode.window.showInformationMessage('Failed to deap-supporter.loadSelection because activeTextEditor is undefined.');
-            return;
-        }
-        const doOverWrite = config.get('alwaysOverwrite');
-        let selection = editor.selection;
-        if (selection.isEmpty) {
-            vscode.window.showInformationMessage('failed to deap-supporter.loadSelection because of no selection');
-            return;
-        }
-        let startRow = selection.active.line;
-        let lines = editor.document.getText(selection).split('\n');
-        lines.forEach((line, index) => {
-            createdClassProvider.loadLine(line, startRow + index, doOverWrite);
-            registeredAliasProvider.loadLine(line, startRow + index, doOverWrite);
-        });
-        if (!config.get('neverShowSuccessfulInformation')) {
-            vscode.window.showInformationMessage('Successfully load selection!');
-        }
-    };
-    const reloadDocument = () => {
-        if (editor === undefined) {
-            vscode.window.showInformationMessage('Failed to deap-supporter. loadDocument because activeTextEditor is undefined.');
-            return;
-        }
-        createdClassProvider.reloadDocument(editor.document);
-        registeredAliasProvider.reloadDocument(editor.document);
-        if (!config.get('neverShowSuccessfulInformation')) {
-            vscode.window.showInformationMessage('Successfully reload document!');
-        }
-    };
-    context.subscriptions.push(vscode.commands.registerCommand('deap-supporter.loadDocument', loadDocument), vscode.commands.registerCommand('deap-supporter.loadSelection', loadSelection), vscode.commands.registerCommand('deap-supporter.reloadDocument', reloadDocument));
+    context.subscriptions.push(vscode.commands.registerCommand('deap-supporter.activate', loadDocument));
 }
 exports.activate = activate;
 // this method is called when your extension is deactivated

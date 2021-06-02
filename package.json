@@ -8,7 +8,7 @@
 	},
 	"description": "a useful extension when you use Deap.",
 	"icon": "images/icon.png",
-	"version": "1.0.1",
+	"version": "2.0.0",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
@@ -19,34 +19,19 @@
 		"Python", "deap"
 	],
 	"activationEvents": [
-		"onCommand:deap-supporter.loadDocument",
-		"onCommand:deap-supporter.loadSelection",
-		"onCommand:deap-supporter.reloadDocument"
+		"onCommand:deap-supporter.activate"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "deap-supporter.loadDocument",
-				"title": "deap-supporter: load from current document for completion"
-			},
-			{
-				"command": "deap-supporter.loadSelection",
-				"title": "deap-supporter: load from selection for completion"
-			},
-			{
-				"command": "deap-supporter.reloadDocument",
-				"title": "deap-supporter: reload from current document for completion"
+				"command": "deap-supporter.activate",
+				"title": "deap-supporter: activate"
 			}
 		],
 		"configuration": {
 			"title": "deap-supporter",
 			"properties": {
-				"deap-supporter.alwaysOverwrite": {
-					"type": "boolean",
-					"default": true,
-					"description": "if true, overwrite the information of the already loaded class when loading created classes"
-				},
 				"deap-supporter.neverShowSuccessfulInformation": {
 					"type": "boolean",
 					"default": false,
@@ -66,7 +51,7 @@
 		},
 		"keybindings": [
 			{
-				"command": "deap-supporter.loadDocument",
+				"command": "deap-supporter.activate",
 				"key": "ctrl+alt+l"
 			}
 		]

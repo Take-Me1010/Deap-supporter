@@ -63,7 +63,7 @@ export class RegisteredAliasProvider implements vscode.CompletionItemProvider, v
         return false;
     }
 
-    public addAlias(aliasName: string, baseFunction: string, baseFunctionArgs: string[], row: number, overwrite: boolean=false): void {
+    public addAlias(aliasName: string, baseFunction: string, baseFunctionArgs: string[], row: number, overwrite: boolean=true): void {
         // 上書き処理の場合
         if(overwrite){
             for (let i = 0; i < this.aliases.length; i++) {
@@ -186,7 +186,7 @@ export class RegisteredAliasProvider implements vscode.CompletionItemProvider, v
     public loadDocument(document: vscode.TextDocument, doOverWrite: boolean=false): void {
         const lines: string[] = document.getText().split('\n');
         for (let index = 0; index < lines.length; index++) {
-            const line = lines[index];
+            const line = lines[index].trim();
             this.loadLine(line, index, doOverWrite);
         }
     }
@@ -197,6 +197,7 @@ export class RegisteredAliasProvider implements vscode.CompletionItemProvider, v
     }
 
     public provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext): vscode.CompletionItem[] | undefined {
+        this.loadDocument(document, true);
         const line = document.lineAt(position).text.substring(0, position.character);
         if(!line.endsWith(this.completionTrigger)){
             return undefined;

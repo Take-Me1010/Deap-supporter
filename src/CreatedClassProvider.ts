@@ -57,13 +57,6 @@ export class CreatedClassProvider implements vscode.CompletionItemProvider, vsco
     private static completionTrigger: string = 'creator.';
 
     /**
-     * デフォルトで上書きするかどうか。
-     * ただし基本的にextension.jsから呼び出される時に、ユーザー設定を読み込んで使用するため不要かも。
-     * @static
-     */
-    private static doOverwriteDefault: boolean = false;
-
-    /**
      * 作られたクラスの情報を保持する配列
      */
     private classes: ClassInformationHolder[];
@@ -215,10 +208,10 @@ export class CreatedClassProvider implements vscode.CompletionItemProvider, vsco
         return true;
     }
 
-    public loadDocument(document: vscode.TextDocument, doOverWrite: boolean=CreatedClassProvider.doOverwriteDefault): void {
+    public loadDocument(document: vscode.TextDocument, doOverWrite: boolean=true): void {
         const lines: string[] = document.getText().split('\n');
         for (let index = 0; index < lines.length; index++) {
-            const line = lines[index];
+            const line = lines[index].trim();
             this.loadLine(line, index, doOverWrite);
         }
     }
@@ -258,6 +251,7 @@ export class CreatedClassProvider implements vscode.CompletionItemProvider, vsco
     }
 
     public provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext): vscode.CompletionItem[]|undefined{
+        this.loadDocument(document, true);
         const line = document.lineAt(position).text.substring(0, position.character);
         if(line.endsWith(CreatedClassProvider.completionTrigger)){
             return this.provideClassCompletionItems();

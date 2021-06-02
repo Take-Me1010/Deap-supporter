@@ -44,7 +44,7 @@ class RegisteredAliasProvider {
         }
         return false;
     }
-    addAlias(aliasName, baseFunction, baseFunctionArgs, row, overwrite = false) {
+    addAlias(aliasName, baseFunction, baseFunctionArgs, row, overwrite = true) {
         // 上書き処理の場合
         if (overwrite) {
             for (let i = 0; i < this.aliases.length; i++) {
@@ -157,7 +157,7 @@ class RegisteredAliasProvider {
     loadDocument(document, doOverWrite = false) {
         const lines = document.getText().split('\n');
         for (let index = 0; index < lines.length; index++) {
-            const line = lines[index];
+            const line = lines[index].trim();
             this.loadLine(line, index, doOverWrite);
         }
     }
@@ -166,6 +166,7 @@ class RegisteredAliasProvider {
         this.loadDocument(document, true);
     }
     provideCompletionItems(document, position, token, context) {
+        this.loadDocument(document, true);
         const line = document.lineAt(position).text.substring(0, position.character);
         if (!line.endsWith(this.completionTrigger)) {
             return undefined;

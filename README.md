@@ -2,7 +2,7 @@
 
 [![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version/Take-Me1010.deap-supporter.svg) ![installs](https://vsmarketplacebadge.apphb.com/installs/Take-Me1010.deap-supporter.svg) ![rating](https://vsmarketplacebadge.apphb.com/rating/Take-Me1010.deap-supporter.svg)](https://marketplace.visualstudio.com/items?itemName=Take-Me1010.deap-supporter)
 
-a useful extension when you use [Deap](https://github.com/deap/deap); a framework for Evolutionary Algorithm.
+An useful extension when you use [Deap](https://github.com/deap/deap), which is a framework for Evolutionary Algorithm.
 
 ![](./images/demo.gif)
 
@@ -19,11 +19,9 @@ Deap-supporter supports compliment, detail, a brief documentation and definition
 
 ## Usages
 
-**First of all, load and parse your python file.**
-Note that this extension activates when you execute commands.
+**First of all, you must activate this extension by the command 'deap-supporter.activate'.**
 
-For this, execute the command:`deap-supporter.loadDocument`.(keybinding: ctrl+alt+l)
-if there are some valid statements, you can do coding comfortably.
+For this, execute the command:`deap-supporter.activate`.(keybinding: ctrl+alt+l)
 
 I believe you can make sense easily by reading below example.
 
@@ -37,7 +35,7 @@ from deap import base, creator, tools
 creator.create('FitnessMax', base.Fitness, weights=(1.0, ))
 ```
 
-then, execute the command:`deap-supporter.loadDocument` from command pallet.
+then, execute the command:`deap-supporter.activate` from command pallet.
 ![./images/commands.jpg](./images/commands.jpg)
 
 Well, **keybinding: ctrl+alt+L** is naturally more useful.
@@ -58,12 +56,10 @@ And now, suppose you add the code below.
 creator.create('Individual', list, fitness=creator.FitnessMax)
 ```
 
-If you code additional `creator.create()`, you should execute `deap-supporter.loadDocument` (ctrl+alt+L).
 Then editor will suggest `creator.Individual`.
 
 ![./images/compliment-3.jpg](./images/compliment-3.jpg)
 
-Note that **your editor never suggests if you forget executing loadDocument command**.
 
 examples above are for `creator.create()`, but `ToolBox.register()` is same.
 You will write codes like below.
@@ -75,8 +71,8 @@ toolbox = base.Toolbox()
 toolbox.register('attr_bool', random.randint, 0, 1)
 ```
 
-Then execute the command for loading, mainly `deap-supporter.loadDocument` with ctrl+alt+L.
-And the editor will suggest toolbox.attr_bool with its equivalent code like below .
+
+The editor will suggest toolbox.attr_bool with its equivalent code like below .
 ![./images/compliment-4.jpg](./images/compliment-4.jpg)
 
 where `additional args` means the rest of its arguments, as ToolBox.register just do partial application.
@@ -90,13 +86,11 @@ if your code is invalid like below,
 ```python
 creator.create('Individual', list, 
 ```
-this extension will not load this line.
+This extension won't load this line.
 The rule is that the line
 - starts with `creator.create` (or you can change its value. see [Settings](#extension-settings))
 - ends with `)`
 - has class name as a first argument; like `creator.create('Foo', ...)` or `creator.create("Bar", ...)`
-
-if the line does not have class name, throw Error. (will be changed in future version)
 
 Some of examples of invalid codes are
 - creator.create('Individual', list, 
@@ -104,30 +98,15 @@ Some of examples of invalid codes are
 - creator.create(Hoge, fuga)
   - because it has no '' or "".
 
-These line will not be loaded in extension if you write.
-... The Python extension may warn.
-
 ## Extension Commands
 
-### `deap-supporter.loadDocument`
+### `deap-supporter.activate`
 
 *keybinding: ctrl+alt+L*
 
-The main command of this extension.
-Load current python file by following [the rule above](#attention).
-Normally you use only this command.
-All of classes created and alias registered that this extension has already held will be overwrote by default. So compliment reflects the current, latest file codes.
-If you do not overwrite, you can change configuration corresponding. See [deap-supporter.alwaysOverwrite](#deap-supporteralwaysoverwrite)
-
-### `deap-supporter.loadSelection`
-
-Load from selection.
-Its function is as same as the one of `deap-supporter.loadDocument` except for the target to load.
-
-### `deap-supporter.reloadDocument`
-
-Load current python file, but if this extension found a same class name or alias name, overwrite it.
-You do not need to execute this command if `deap-supporter.alwaysOverwrite` is true(default), as its effect is same.
+It is the command for you to activate this extension.
+Once you execute this command, the compliment for deap will be valid until you close VSCode.
+Why don't I always activate this extension? --- Apparently, I use python not always for deap.
 
 ## Extension Settings
 
@@ -178,18 +157,18 @@ toolBox = base.ToolBox()
 
 toolBox.register('Hoge', fuga)
 ```
-you should set this configuration `"toolBox"`.
+You should set this configuration `"toolBox"`.
 
 This extension does not depend on how to call `deap.base.ToolBox`.
 
 ## Requirements
 
 No special requirements.
-you should just use the latest version of VScode.
+You should just use the latest version of VScode.
 
 ## Contributions
 
-I would like to implement showing the full documentation and its signature but I don't know how to do it.
+I want to implement a function to show the documentation and its signature, but I don't know how to do it.
 I'm waiting for your contribution.
 
 ## Known Issues

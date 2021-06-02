@@ -156,10 +156,10 @@ class CreatedClassProvider {
         this.addClass(name, base, row, attrs, executeOverwrite);
         return true;
     }
-    loadDocument(document, doOverWrite = CreatedClassProvider.doOverwriteDefault) {
+    loadDocument(document, doOverWrite = true) {
         const lines = document.getText().split('\n');
         for (let index = 0; index < lines.length; index++) {
-            const line = lines[index];
+            const line = lines[index].trim();
             this.loadLine(line, index, doOverWrite);
         }
     }
@@ -188,6 +188,7 @@ class CreatedClassProvider {
         return compItemList;
     }
     provideCompletionItems(document, position, token, context) {
+        this.loadDocument(document, true);
         const line = document.lineAt(position).text.substring(0, position.character);
         if (line.endsWith(CreatedClassProvider.completionTrigger)) {
             return this.provideClassCompletionItems();
@@ -255,10 +256,4 @@ exports.CreatedClassProvider = CreatedClassProvider;
  * @static
  */
 CreatedClassProvider.completionTrigger = 'creator.';
-/**
- * デフォルトで上書きするかどうか。
- * ただし基本的にextension.jsから呼び出される時に、ユーザー設定を読み込んで使用するため不要かも。
- * @static
- */
-CreatedClassProvider.doOverwriteDefault = false;
 //# sourceMappingURL=CreatedClassProvider.js.map
